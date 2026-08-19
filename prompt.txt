@@ -1,0 +1,214 @@
+The current portfolio is functional, but I’m not fully satisfied with the design, content presentation, and especially the dark mode.
+
+I want you to step back and rethink the portfolio as if you were designing it for a 1-year experienced Software Engineer who is applying for strong product/startup engineering roles.
+
+Do not just make small CSS changes. Re-evaluate the design, content hierarchy, storytelling and overall positioning.
+
+1. Use my real experience better
+
+I have worked at Growve Pvt Ltd for ~1 year.
+
+From the work/context I have already provided, identify the 1–2 strongest engineering stories from my professional work and present them as proper case studies.
+
+For example, relevant areas include:
+
+Multi-tenant seller/logistics platform
+Invoice & PDF generation system
+BullMQ workers and scheduled jobs
+Last-mile/reassignment workflows
+PostgreSQL and multi-tenant data problems
+Production debugging
+Puppeteer/automation
+Amazon scraping / HSN classification
+
+Don't show everything.
+
+Choose the work that makes me look like a well-rounded engineer.
+
+For each selected work item, communicate:
+
+Problem → What I did → Technical approach → Engineering challenge → Outcome
+
+Do not invent metrics or responsibilities.
+
+2. Also use my GitHub projects
+
+If my GitHub/repository information is available in the current project/context, inspect it and identify projects that make my profile stronger.
+
+In particular, look for projects such as:
+
+Resume AI Bot
+Background Remover
+other technically meaningful projects in my repositories
+
+Don't simply list every repository.
+
+Select 2–4 projects that complement my professional experience.
+
+For example:
+
+Professional work demonstrates:
+production engineering + backend + systems
+
+Personal projects can demonstrate:
+product thinking + AI + frontend + experimentation
+
+This combination should make the portfolio much stronger.
+
+If you can inspect the repositories, use the actual technologies/features from them instead of inventing descriptions.
+
+3. Rethink the portfolio structure
+
+I don't want a portfolio that feels like:
+
+Hero → Skills → 10 project cards → About → Contact
+
+Instead create a storytelling flow suitable for someone with ~1 year experience:
+
+Hero
+↓
+What I build / Engineering focus
+↓
+Professional Experience
+↓
+Selected Engineering Work
+↓
+Selected Personal Projects
+↓
+Technical Skills
+↓
+About / Growth
+↓
+Contact
+
+The visitor should understand my engineering journey naturally.
+
+4. Make the design more professional
+
+Use your own design judgment.
+
+I want something that feels:
+
+premium + minimal + modern + mature + technical + human
+
+Not flashy.
+
+The current dark mode doesn't feel right to me.
+
+Redesign the dark mode completely.
+
+Don't just invert colors.
+
+Prefer a sophisticated dark palette with:
+
+deep charcoal/black
+warm or slightly muted whites
+subtle borders
+restrained accent color
+excellent contrast
+elegant cards
+
+But also make the light mode the primary visual experience if it looks more professional.
+
+The website should look excellent in both themes.
+
+5. Think like a recruiter
+
+Optimize the portfolio for someone who spends only 15–30 seconds scanning it.
+
+Immediately communicate:
+
+Piyush → Software Engineer → 1 year production experience → what he builds → real engineering work → personal projects → technical stack → contact
+
+Make important information visually obvious.
+
+Don't bury my strongest experience underneath decorative sections.
+
+6. Don't overclaim
+
+I am only around 1 year experienced.
+
+Do NOT make me look like a senior engineer.
+
+Instead make me look like:
+
+A strong early-career software engineer who already has meaningful production experience and understands frontend, backend, databases, async systems and real-world debugging.
+
+That positioning is much more credible.
+
+7. Improve the copy
+
+Remove generic AI-sounding phrases like:
+
+"passionate developer"
+"innovative solutions"
+"cutting-edge technologies"
+"scalable and robust solutions"
+
+Use concise, specific engineering language.
+
+The copy should feel like a real engineer wrote it.
+
+8. Don't overload the site
+
+I would rather have:
+
+3 excellent projects
+
+than:
+
+10 average projects.
+
+I would rather have:
+
+2 excellent professional case studies
+
+than:
+
+15 bullet points about my job.
+
+Quality > quantity.
+
+9. Visual direction
+
+Create an original visual identity.
+
+Do NOT copy my old portfolio, my colleague's portfolio, or any other website.
+
+Use:
+
+excellent typography
+strong spacing
+editorial layout
+subtle grid/system elements
+refined cards
+elegant hover states
+tasteful motion
+excellent mobile layout
+
+Avoid:
+
+excessive gradients
+neon
+3D
+particles
+excessive glassmorphism
+fake statistics
+skill percentage bars
+huge animated text
+unnecessary developer gimmicks
+10. Final objective
+
+I don't care about having the "coolest portfolio".
+
+I want the portfolio that gives me the best possible professional impression for my experience level.
+
+Someone should visit and think:
+
+"He only has around a year of experience, but he has already worked on real systems, understands backend/async/database problems, builds interesting things outside work, and presents his work professionally."
+
+That is the impression I want.
+
+Now audit the current implementation, identify what is making it feel weak (design + content + hierarchy + dark mode), and then redesign/refactor it accordingly.
+
+Don't ask me for approval after every small change. Use your judgment and make the portfolio significantly better.
