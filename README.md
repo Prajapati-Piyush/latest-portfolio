@@ -55,3 +55,4 @@ editing an array, not a component.
   `framer-motion`, `geist`. That's the whole list.
 - Everything prerenders to static HTML; there are no client-side data fetches.
 # latest-portfolio
+# latest-portfolio
