@@ -7,7 +7,8 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()} {site.name}
         </p>
-        <p>Built with Next.js, TypeScript and Tailwind CSS.</p>
+
+        <p>Designed & built with care.</p>
       </div>
     </footer>
   );

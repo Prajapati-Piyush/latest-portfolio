@@ -76,7 +76,7 @@ export function Navbar() {
           className="text-[0.95rem] font-medium tracking-tight transition-opacity duration-200 hover:opacity-70"
         >
           {site.name}
-          <span className="text-accent">.</span>
+          <span className="ml-2 text-accent">{site.surname}</span>
         </Link>
 
         <div className="hidden items-center gap-1 md:flex">
