@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   verification: {
     // Paste the token from Search Console → Settings → Ownership verification,
     // or verify by DNS instead and delete this line.
-    google: "XleXCvK52j6a5wqXBQjGaiOeLiniSSf6nzoMHFN2ioU",
+    google: "N6YaxS1pbOtIo0ZwOosOidaTn_m6EcvCCQXOAhGxDUI",
   },
   alternates: { canonical: "/" },
   // Paste the token from Search Console → Settings → Ownership verification,
