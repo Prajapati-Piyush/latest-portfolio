@@ -123,3 +123,21 @@
     opacity: 0;
   }
 }
+
+/* Above-the-fold entrance, CSS-only so the hero paints (and counts as LCP)
+   without waiting on hydration. `both` fill leaves it fully visible, which also
+   means the reduced-motion override above resolves to "just show it". */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal-in {
+  animation: reveal-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}

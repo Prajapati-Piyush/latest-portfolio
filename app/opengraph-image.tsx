@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
-import { site, hero } from "@/content/site";
+import { site, seo } from "@/content/site";
 
-export const alt = `${site.name} — ${site.role}`;
+export const alt = seo.title;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -32,8 +32,10 @@ export default function OgImage() {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-          <div style={{ fontSize: 78, fontWeight: 600, letterSpacing: "-0.035em" }}>
-            {site.name}
+          {/* Full name — this image is the share-card identity, and "Piyush"
+              alone doesn't identify anyone. */}
+          <div style={{ fontSize: 72, fontWeight: 600, letterSpacing: "-0.035em" }}>
+            {site.fullName}
           </div>
           <div
             style={{
@@ -44,7 +46,7 @@ export default function OgImage() {
               letterSpacing: "-0.015em",
             }}
           >
-            {hero.headline}
+            {site.positioning}
           </div>
         </div>
 

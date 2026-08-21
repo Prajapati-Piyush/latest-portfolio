@@ -3,48 +3,53 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { site, hero } from "@/content/site";
+import { site, seo, sameAs, stack, experience } from "@/content/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.role}`,
-    template: `%s — ${site.name}`,
+    // Full name in the default title so the site can rank for the name itself.
+    default: seo.title,
+    template: `%s — ${site.fullName}`,
   },
-  description: site.positioning,
-  keywords: [
-    "Software Engineer",
-    "Next.js",
-    "React",
-    "Node.js",
-    "Fastify",
-    "PostgreSQL",
-    "BullMQ",
-    "TypeScript",
-    "Backend",
-  ],
-  authors: [{ name: site.name, url: site.url }],
-  creator: site.name,
+  description: seo.description,
+  keywords: [...seo.keywords],
+  authors: [{ name: site.fullName, url: site.url }],
+  creator: site.fullName,
+  publisher: site.fullName,
+  applicationName: `${site.fullName} Portfolio`,
+  category: "technology",
   openGraph: {
     type: "profile",
+    firstName: site.name,
+    lastName: site.surname,
     locale: "en_US",
     url: site.url,
-    siteName: `${site.name} — ${site.role}`,
-    title: `${site.name} — ${site.role}`,
-    description: hero.headline,
+    siteName: `${site.fullName} — ${site.role}`,
+    title: seo.title,
+    description: seo.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.role}`,
-    description: hero.headline,
+    title: seo.title,
+    description: seo.description,
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   alternates: { canonical: "/" },
+  // Paste the token from Search Console → Settings → Ownership verification,
+  // or verify by DNS instead and delete this line.
+  // verification: { google: "your-google-site-verification-token" },
 };
 
 export const viewport: Viewport = {
@@ -61,15 +66,44 @@ export const viewport: Viewport = {
 const themeBootScript = `(function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","light")}})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const personId = `${site.url}/#person`;
+
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: site.name,
+    "@id": personId,
+    name: site.fullName,
+    givenName: site.name,
+    familyName: site.surname,
     jobTitle: site.role,
-    description: site.positioning,
+    description: seo.description,
     url: site.url,
-    worksFor: { "@type": "Organization", name: "Growve Pvt Ltd" },
-    knowsAbout: ["Next.js", "React", "Node.js", "Fastify", "PostgreSQL", "BullMQ", "Docker"],
+    email: `mailto:${site.email}`,
+    image: `${site.url}/opengraph-image`,
+    // The profiles that prove this is the same person elsewhere on the web.
+    sameAs: [...sameAs],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: site.city,
+      addressRegion: site.region,
+      addressCountry: site.country,
+    },
+    worksFor: {
+      "@type": "Organization",
+      name: experience[0].company,
+    },
+    knowsAbout: stack.flatMap((g) => [...g.items]),
+  };
+
+  const siteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${site.url}/#website`,
+    url: site.url,
+    name: `${site.fullName} — ${site.role}`,
+    description: seo.description,
+    inLanguage: "en",
+    publisher: { "@id": personId },
   };
 
   return (
@@ -95,7 +129,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([personSchema, siteSchema]),
+          }}
         />
       </body>
     </html>

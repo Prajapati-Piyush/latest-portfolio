@@ -50,6 +50,23 @@ export function Work() {
           </Reveal>
         ))}
       </ul>
+
+      <Reveal delay={0.05}>
+        <p className="mt-8 text-[0.9rem]">
+          <Link
+            href="/work"
+            className="group inline-flex items-center gap-1.5 text-muted transition-colors duration-200 hover:text-ink"
+          >
+            All projects &amp; case studies
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-200 group-hover:translate-x-0.5"
+            >
+              →
+            </span>
+          </Link>
+        </p>
+      </Reveal>
     </Section>
   );
 }

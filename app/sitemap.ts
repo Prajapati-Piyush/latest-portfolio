@@ -6,7 +6,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: site.url, lastModified: now, changeFrequency: "monthly", priority: 1 },
-    // Placeholder case studies stay out of the sitemap until they describe real work.
+    {
+      url: `${site.url}/work`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    // Unpublished case studies stay out until they describe real work — their
+    // detail pages are noindexed too, so the two signals agree.
     ...projects
       .filter((p) => p.published)
       .map((p) => ({

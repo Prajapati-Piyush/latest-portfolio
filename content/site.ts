@@ -5,15 +5,33 @@
  * Edit this file and the whole site updates; no component holds its own copy.
  */
 
+/**
+ * Canonical origin. Every canonical URL, OG tag and sitemap entry is built from
+ * this, so it must be the real production domain — a wrong value here silently
+ * points Google at pages that don't exist.
+ *
+ * Set NEXT_PUBLIC_SITE_URL in the deployment environment (Vercel: Project →
+ * Settings → Environment Variables). The literal below is only a local fallback.
+ */
+const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://piyushprajapati.vercel.app"
+).replace(/\/+$/, "");
+
 export const site = {
   name: "Piyush",
   surname: "Prajapati",
+  /** Full name — used wherever search engines need the complete entity string. */
+  fullName: "Piyush Prajapati",
   role: "Software Engineer",
-  // TODO: replace with your real domain before deploying (used for OG tags + sitemap).
-  url: "https://piyush.dev",
+  /** Longer, keyword-bearing role used in titles and structured data. */
+  roleLong: "Full-Stack & Backend Software Engineer",
+  url: SITE_URL,
   positioning:
     "Software Engineer building scalable full-stack, backend, and AI-powered systems.",
   location: "Mumbai, India",
+  city: "Mumbai",
+  region: "Maharashtra",
+  country: "IN",
   email: "piyushprajapati0507@gmail.com",
   links: {
     github: "https://github.com/Prajapati-Piyush",
@@ -21,6 +39,41 @@ export const site = {
     // Drop your PDF at public/resume.pdf, or point this at an external link.
     resume: "/resume.pdf",
   },
+} as const;
+
+/**
+ * Profiles that prove this is the same person across the web. `sameAs` is how
+ * Google reconciles the site with the GitHub/LinkedIn identity, so only add
+ * URLs that genuinely belong to Piyush.
+ */
+export const sameAs: readonly string[] = [site.links.github, site.links.linkedin];
+
+/**
+ * Head-tag copy, kept next to the content it describes.
+ * Titles stay under ~60 chars and descriptions under ~155 so Google renders
+ * them whole rather than truncating.
+ */
+export const seo = {
+  title: `${site.fullName} — ${site.roleLong}`,
+  description:
+    "Piyush Prajapati is a Software Engineer in Mumbai building scalable full-stack and backend systems with Next.js, Node.js, Fastify, PostgreSQL, Redis, BullMQ and AI APIs.",
+  /**
+   * Descriptive of what the site actually covers. Not a ranking factor on its
+   * own — kept short and honest rather than stuffed.
+   */
+  keywords: [
+    "Piyush Prajapati",
+    "Piyush Prajapati software engineer",
+    "software engineer portfolio",
+    "full-stack developer Mumbai",
+    "backend developer Mumbai",
+    "Next.js developer",
+    "Node.js developer",
+    "Fastify developer",
+    "PostgreSQL multi-tenant architecture",
+    "BullMQ background jobs",
+    "Generative AI developer",
+  ],
 } as const;
 
 export const hero = {
@@ -51,15 +104,21 @@ export type Project = {
   solution: readonly string[];
   outcome: string;
   links?: { label: string; href: string }[];
+  /** Case-study <title>. Kept under ~60 chars so Google shows it whole. */
+  metaTitle: string;
+  /** Case-study meta description. Under ~155 chars, written for a human. */
+  metaDescription: string;
+  /** Topics this case study genuinely demonstrates — drives internal linking. */
+  topics: readonly string[];
   /** Set false while the case study is still a placeholder. */
   published: boolean;
 };
 
 /**
- * TODO: These are scaffolds, not descriptions of real work.
- * Replace every field with an actual project before publishing —
- * or delete the entry entirely. `published: false` keeps the detail
- * page out of the sitemap until it is real.
+ * Real, shipped work. Each entry becomes a crawlable case study at
+ * /work/<slug> and is linked from the homepage and the /work index.
+ * `published: false` keeps an entry out of the sitemap and noindexes its
+ * detail page until it describes something real.
  */
 export const projects: readonly Project[] = [
   {
@@ -96,6 +155,10 @@ export const projects: readonly Project[] = [
     ],
     outcome:
       "Contributed to production-grade CRM and logistics workflows while gaining hands-on experience in scalable backend architecture, asynchronous processing, third-party integrations, and automation.",
+    metaTitle: "Multi-Tenant CRM & Logistics Platform Case Study",
+    metaDescription:
+      "How I built multi-tenant CRM and logistics workflows with Next.js, Fastify, PostgreSQL, Redis and BullMQ \u2014 including Blue Dart shipment integrations and scheduled invoice jobs.",
+    topics: ["Multi-tenant architecture", "Fastify REST APIs", "PostgreSQL schema design", "BullMQ job queues", "Redis", "Background workers", "Cron scheduling", "Third-party API integration", "Webhooks", "PDF generation", "Docker"],
     published: true,
   },
 
@@ -124,6 +187,10 @@ export const projects: readonly Project[] = [
     ],
     outcome:
       "Created an end-to-end GenAI application that combines document analysis, job matching, AI-generated interview preparation, authentication, and persistent user reports.",
+    metaTitle: "PrepPilot: AI Interview Prep App with Gemini",
+    metaDescription:
+      "Building PrepPilot, a GenAI app that parses resumes and job descriptions with Google Gemini to generate personalised technical and HR interview prep reports.",
+    topics: ["LLM integration", "Google Gemini API", "Resume parsing", "PDF text extraction", "MongoDB", "Express.js", "Authentication", "React", "Prompt design"],
     published: true,
   },
 
@@ -148,6 +215,10 @@ export const projects: readonly Project[] = [
     ],
     outcome:
       "Built a practical AI-powered image processing application demonstrating full-stack development and hands-on experience integrating AI capabilities into user-facing products.",
+    metaTitle: "AI Background Remover Built with Next.js",
+    metaDescription:
+      "Building an AI background removal tool in Next.js and TypeScript \u2014 upload, processing, preview and export flow around an AI image-segmentation pipeline.",
+    topics: ["AI image processing", "Image segmentation", "Next.js", "TypeScript", "File uploads", "Async processing"],
     published: true,
   },
 ];
